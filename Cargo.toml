@@ -1,10 +1,23 @@
 [package]
 authors     = ["Xavier Lau <xavier@inv.cafe>"]
-description = "<DESCRIPTION>"
+build       = "build.rs"
+description = "A fast, safe, tiny Ethereum/ECDSA key generator."
 edition     = "2021"
-homepage    = "https://<NAME>.hack.ink"
+homepage    = "https://eth-key.hack.ink"
 license     = "GPL-3.0"
-name        = "<NAME>"
+name        = "ek"
 readme      = "README.md"
-repository  = "https://github.com/hack-ink/<NAME>"
+repository  = "https://github.com/hack-ink/eth-key"
 version     = "0.1.0"
+
+[build-dependencies]
+# crates.io
+vergen = { version = "7.4" }
+
+[dependencies]
+anyhow      = { version = "1.0" }
+array-bytes = { version = "4.0" }
+# bip39       = { version = "1.0", features = ["rand"] }
+rand        = { version = "0.8", features = ["std_rng"] }
+secp256k1   = { version = "0.24", features = ["rand"] }
+tiny-keccak = { version = "2.0", features = ["keccak"] }
