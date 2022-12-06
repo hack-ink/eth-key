@@ -23,8 +23,8 @@ impl Display for Key {
 			public-key  = \"{}\"\n\
 			secret-seed = \"{}\"\
 			",
-			array_bytes::bytes2hex("0x", &self.address),
-			self.public_key,
+			self.address,
+			array_bytes::bytes2hex("0x", &self.public_key.serialize()),
 			array_bytes::bytes2hex("0x", self.secret_key.as_ref()),
 		)
 	}
