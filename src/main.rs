@@ -21,7 +21,7 @@ impl Display for Key {
 			secret-seed = \"{}\"\
 			",
 			self.address,
-			array_bytes::bytes2hex("0x", &self.public_key.serialize()),
+			array_bytes::bytes2hex("0x", self.public_key.serialize()),
 			array_bytes::bytes2hex("0x", self.secret_key.as_ref()),
 		)
 	}
@@ -31,7 +31,7 @@ impl Display for Key {
 struct Address([u8; 20]);
 impl Display for Address {
 	fn fmt(&self, f: &mut Formatter) -> ResultFmt {
-		write!(f, "{}", array_bytes::bytes2hex("0x", &self.0))
+		write!(f, "{}", array_bytes::bytes2hex("0x", self.0))
 	}
 }
 
