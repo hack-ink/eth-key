@@ -1,8 +1,5 @@
 // std
-use std::{
-	fmt::{Display, Formatter, Result as ResultFmt},
-	ops::Deref,
-};
+use std::fmt::{Display, Formatter, Result as ResultFmt};
 // crates.io
 use anyhow::Result;
 use secp256k1::{PublicKey, Secp256k1, SecretKey};
@@ -32,16 +29,9 @@ impl Display for Key {
 
 #[derive(Debug, Default)]
 struct Address([u8; 20]);
-impl Deref for Address {
-	type Target = [u8];
-
-	fn deref(&self) -> &Self::Target {
-		self.0.as_slice()
-	}
-}
 impl Display for Address {
 	fn fmt(&self, f: &mut Formatter) -> ResultFmt {
-		write!(f, "{}", array_bytes::bytes2hex("0x", self))
+		write!(f, "{}", array_bytes::bytes2hex("0x", &self.0))
 	}
 }
 
