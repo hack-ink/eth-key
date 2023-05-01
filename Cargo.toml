@@ -16,7 +16,7 @@ vergen = { version = "7.5" }
 
 [dependencies]
 anyhow      = { version = "1.0" }
-array-bytes = { version = "6.0" }
+array-bytes = { version = "6.1" }
 # bip39       = { version = "1.0", features = ["rand"] }
 rand        = { version = "0.8", features = ["std_rng"] }
 secp256k1   = { version = "0.27", features = ["rand"] }
