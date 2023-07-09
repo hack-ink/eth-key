@@ -1,10 +1,19 @@
 // crates.io
-use vergen::{Config, ShaKind};
+use vergen::EmitBuilder;
 
 fn main() {
-	let mut config = Config::default();
+	let mut emitter = EmitBuilder::builder();
 
-	*config.git_mut().sha_kind_mut() = ShaKind::Short;
+	emitter.cargo_target_triple();
 
-	vergen::vergen(config).unwrap();
+	// Disable the git version if installed from <crates.io>.
+	if emitter.clone().git_sha(true).fail_on_error().emit().is_err() {
+		println!("cargo:rustc-env=VERGEN_GIT_SHA=crates.io");
+
+		emitter
+	} else {
+		*emitter.git_sha(true)
+	}
+	.emit()
+	.unwrap();
 }

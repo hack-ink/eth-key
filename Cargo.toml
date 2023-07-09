@@ -12,11 +12,11 @@ version     = "0.1.0"
 
 [build-dependencies]
 # crates.io
-vergen = { version = "7.5" }
+vergen = { version = "8.2", features = ["build", "cargo", "git", "gitcl"] }
 
 [dependencies]
 anyhow      = { version = "1.0" }
-array-bytes = { version = "6.0" }
+array-bytes = { version = "6.1" }
 # bip39       = { version = "1.0", features = ["rand"] }
 rand        = { version = "0.8", features = ["std_rng"] }
 secp256k1   = { version = "0.27", features = ["rand"] }
