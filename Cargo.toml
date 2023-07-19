@@ -5,10 +5,18 @@ description = "A fast, safe, tiny Ethereum/ECDSA key generator."
 edition     = "2021"
 homepage    = "https://eth-key.hack.ink"
 license     = "GPL-3.0"
-name        = "ek"
+name        = "eth-key"
 readme      = "README.md"
 repository  = "https://github.com/hack-ink/eth-key"
 version     = "0.1.0"
+
+[profile.ci-dev]
+incremental = false
+inherits    = "dev"
+
+[profile.ci-release]
+inherits = "release"
+lto      = true
 
 [build-dependencies]
 # crates.io
